@@ -122,33 +122,19 @@
   }
 
   /* ---------- HERO ---------- */
-  .hero{
-    padding:64px 0 0;
-    position:relative;
-    overflow:hidden;
-  }
-  .hero-topo{
-    position:absolute;
-    top:-40px; right:-60px;
-    width:520px; height:520px;
-    opacity:0.5;
-    pointer-events:none;
-    z-index:0;
-  }
+  .hero{padding:64px 0 0;}
   .hero-grid{
     display:grid;
     grid-template-columns:200px 1fr;
     gap:40px;
     align-items:center;
-    position:relative;
-    z-index:1;
   }
   .hero-photo{
     width:200px; height:200px;
     border-radius:50%;
     object-fit:cover;
     border:3px solid var(--navy);
-    box-shadow:0 0 0 6px var(--parchment), 0 0 0 7px var(--orange);
+    box-shadow:0 0 0 6px var(--parchment), 0 0 0 7px var(--line);
   }
   .hero-name{
     font-size:clamp(2.1rem, 5vw, 3.2rem);
@@ -165,10 +151,8 @@
   /* signature: scoreboard / ticker stat bar */
   .statbar{
     margin-top:40px;
-    background:var(--parchment);
-    color:var(--navy);
-    border:1px solid var(--line);
-    border-top:3px solid var(--orange);
+    background:var(--navy);
+    color:var(--parchment);
     border-radius:var(--radius);
     overflow:hidden;
   }
@@ -178,7 +162,7 @@
   }
   .stat{
     padding:18px 22px;
-    border-left:1px solid var(--line);
+    border-left:1px solid var(--line-dark);
   }
   .stat:first-child{border-left:none;}
   .stat-label{
@@ -186,14 +170,13 @@
     font-size:0.66rem;
     letter-spacing:0.12em;
     text-transform:uppercase;
-    color:var(--teal);
+    color:#C2B49A;
   }
   .stat-value{
     margin-top:4px;
     font-family:'Oswald', sans-serif;
     font-size:1.02rem;
     letter-spacing:0.02em;
-    color:var(--navy);
   }
   .stat-value .accent{color:var(--orange);}
   @media (max-width:760px){
@@ -201,27 +184,13 @@
     .hero-photo{margin:0 auto;}
     .hero-tagline{margin-left:auto; margin-right:auto;}
     .statbar-row{grid-template-columns:1fr;}
-    .stat{border-left:none; border-top:1px solid var(--line); text-align:left;}
+    .stat{border-left:none; border-top:1px solid var(--line-dark); text-align:left;}
     .stat:first-child{border-top:none;}
   }
 
   /* ---------- SECTION SHELL ---------- */
-  section{padding:88px 0; position:relative;}
+  section{padding:88px 0;}
   section + section{border-top:1px solid var(--line);}
-  section + section::before{
-    content:"";
-    position:absolute;
-    top:-11px; left:50%;
-    transform:translateX(-50%);
-    width:60px; height:22px;
-    background:var(--parchment);
-    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 20'%3E%3Cpath d='M2 16 L16 4 L24 12 L34 2 L46 14 L58 16' fill='none' stroke='%233C2A1E' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M2 17 Q10 13 18 17 T34 17 T50 17 T58 17' fill='none' stroke='%235C7A4A' stroke-width='1.6' stroke-linecap='round'/%3E%3C/svg%3E");
-    background-repeat:no-repeat;
-    background-position:center;
-    background-size:60px 20px;
-  }
-  .hero + section{border-top:none;}
-  .hero + section::before{content:none;}
   .section-head{margin-bottom:40px;}
   .section-title{
     font-size:clamp(1.5rem, 3vw, 2rem);
@@ -248,9 +217,7 @@
   .focus-card{
     background:var(--parchment);
     padding:28px;
-    transition:background 0.2s ease;
   }
-  .focus-card:hover{background:#EFEDE4;}
   .focus-icon{
     width:30px; height:30px;
     color:var(--orange);
@@ -280,7 +247,6 @@
     width:100%;
     height:auto;
     border:1px solid var(--line);
-    border-top:3px solid var(--orange);
     border-radius:var(--radius);
     background:#fff;
   }
@@ -434,15 +400,6 @@
 
   <!-- HERO -->
   <section class="hero" style="padding-bottom:0;">
-    <svg class="hero-topo" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <g fill="none" stroke-width="1.4">
-        <path d="M40,260 C90,210 130,290 180,250 C230,210 260,260 320,220" stroke="#8A6D3F" opacity="0.5"/>
-        <path d="M20,220 C80,170 120,250 180,210 C240,170 270,220 340,180" stroke="#8A6D3F" opacity="0.4"/>
-        <path d="M0,180 C70,130 110,210 170,170 C230,130 270,180 360,140" stroke="#5C7A4A" opacity="0.55"/>
-        <path d="M-10,140 C60,90 100,170 160,130 C220,90 270,140 380,100" stroke="#5C7A4A" opacity="0.45"/>
-        <path d="M-10,100 C50,50 100,130 150,90 C210,40 260,100 390,60" stroke="#3C2A1E" opacity="0.3"/>
-      </g>
-    </svg>
     <div class="wrap">
       <div class="hero-grid">
         <img src="images/ChristianVaikona_GeneralPFP.JPG" alt="Headshot of Christian Vaikona" class="hero-photo">
