@@ -1,239 +1,645 @@
 <!doctype html>
 <html lang="en">
-  <head>
+<head>
+<meta charset="utf-8">
+<title>Christian Vaikona</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="Christian Vaikona — Computer Science & Mathematics student focused on Data Science, AI, and Sports Analytics.">
 
-    <title>Christian Vaikona</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 
+<style>
+  :root{
+    --navy: #3C2A1E;
+    --navy-soft: #4A3526;
+    --parchment: #F5F3EE;
+    --ink: #1F2937;
+    --ink-soft: #5B6470;
+    --orange: #5C7A4A;
+    --teal: #8A6D3F;
+    --line: #DCD7CC;
+    --line-dark: rgba(245,243,238,0.18);
+    --radius: 4px;
+    --max: 980px;
+  }
 
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
-    <link rel="stylesheet" href="fonts/icomoon/style.css">
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--parchment);
+    color:var(--ink);
+    font-family:'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size:16px;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:0.01ms !important; transition-duration:0.01ms !important;}
+  }
 
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/jquery-ui.css">
-    <link rel="stylesheet" href="css/owl.carousel.min.css">
-    <link rel="stylesheet" href="css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+  h1,h2,h3{
+    font-family:'Oswald', sans-serif;
+    text-transform:uppercase;
+    letter-spacing:0.02em;
+    color:var(--navy);
+    margin:0;
+  }
 
-    <link rel="stylesheet" href="css/jquery.fancybox.min.css">
+  a{color:var(--orange); text-decoration:none;}
+  a:hover{text-decoration:underline;}
+  a:focus-visible, button:focus-visible{
+    outline:2px solid var(--orange);
+    outline-offset:3px;
+  }
 
-    <link rel="stylesheet" href="css/bootstrap-datepicker.css">
+  .wrap{max-width:var(--max); margin:0 auto; padding:0 24px;}
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.72rem;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--teal);
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .eyebrow::before{
+    content:"";
+    width:18px; height:2px;
+    background:var(--orange);
+    display:inline-block;
+  }
 
-    <link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
+  /* ---------- NAV ---------- */
+  header.nav{
+    position:sticky; top:0; z-index:50;
+    background:rgba(245,243,238,0.92);
+    backdrop-filter:saturate(150%) blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:16px 24px;
+    max-width:var(--max); margin:0 auto;
+  }
+  .nav-name{
+    font-family:'Oswald', sans-serif;
+    font-size:1.05rem;
+    font-weight:600;
+    letter-spacing:0.04em;
+    color:var(--navy);
+    text-decoration:none;
+  }
+  .nav-name:hover{text-decoration:none; color:var(--orange);}
+  .nav-links{display:flex; gap:28px; list-style:none; margin:0; padding:0;}
+  .nav-links a{
+    color:var(--ink);
+    font-size:0.85rem;
+    font-weight:500;
+    letter-spacing:0.03em;
+    text-transform:uppercase;
+  }
+  .nav-links a:hover{color:var(--orange); text-decoration:none;}
+  .nav-toggle{display:none; background:none; border:1px solid var(--line); border-radius:var(--radius); padding:8px 10px; font-size:0.8rem; font-family:'IBM Plex Mono',monospace; color:var(--navy); cursor:pointer;}
 
-    <link rel="stylesheet" href="css/aos.css">
+  @media (max-width:760px){
+    .nav-links{
+      position:fixed; top:60px; right:0; left:0;
+      background:var(--parchment);
+      flex-direction:column;
+      gap:0;
+      border-bottom:1px solid var(--line);
+      max-height:0; overflow:hidden;
+      transition:max-height 0.25s ease;
+    }
+    .nav-links.open{max-height:240px;}
+    .nav-links a{padding:14px 24px; display:block; border-top:1px solid var(--line);}
+    .nav-toggle{display:block;}
+  }
 
-    <link rel="stylesheet" href="css/style.css">
+  /* ---------- HERO ---------- */
+  .hero{padding:64px 0 0;}
+  .hero-grid{
+    display:grid;
+    grid-template-columns:200px 1fr;
+    gap:40px;
+    align-items:center;
+  }
+  .hero-photo{
+    width:200px; height:200px;
+    border-radius:50%;
+    object-fit:cover;
+    border:3px solid var(--navy);
+    box-shadow:0 0 0 6px var(--parchment), 0 0 0 7px var(--line);
+  }
+  .hero-name{
+    font-size:clamp(2.1rem, 5vw, 3.2rem);
+    line-height:1.04;
+    font-weight:600;
+  }
+  .hero-tagline{
+    margin-top:10px;
+    font-size:1.05rem;
+    color:var(--ink-soft);
+    max-width:46ch;
+  }
 
-  </head>
-  <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
+  /* signature: scoreboard / ticker stat bar */
+  .statbar{
+    margin-top:40px;
+    background:var(--navy);
+    color:var(--parchment);
+    border-radius:var(--radius);
+    overflow:hidden;
+  }
+  .statbar-row{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+  }
+  .stat{
+    padding:18px 22px;
+    border-left:1px solid var(--line-dark);
+  }
+  .stat:first-child{border-left:none;}
+  .stat-label{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.66rem;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:#C2B49A;
+  }
+  .stat-value{
+    margin-top:4px;
+    font-family:'Oswald', sans-serif;
+    font-size:1.02rem;
+    letter-spacing:0.02em;
+  }
+  .stat-value .accent{color:var(--orange);}
+  @media (max-width:760px){
+    .hero-grid{grid-template-columns:1fr; text-align:center;}
+    .hero-photo{margin:0 auto;}
+    .hero-tagline{margin-left:auto; margin-right:auto;}
+    .statbar-row{grid-template-columns:1fr;}
+    .stat{border-left:none; border-top:1px solid var(--line-dark); text-align:left;}
+    .stat:first-child{border-top:none;}
+  }
 
+  /* ---------- SECTION SHELL ---------- */
+  section{padding:88px 0;}
+  section + section{border-top:1px solid var(--line);}
+  .section-head{margin-bottom:40px;}
+  .section-title{
+    font-size:clamp(1.5rem, 3vw, 2rem);
+    margin-top:8px;
+  }
 
-  <div id="overlayer"></div>
-  <div class="loader">
-    <div class="spinner-border text-primary" role="status">
-      <span class="sr-only">Loading...</span>
-    </div>
+  /* ---------- ABOUT ---------- */
+  .about-body{
+    max-width:64ch;
+    font-size:1.02rem;
+    color:var(--ink);
+  }
+  .about-body p{margin:0 0 18px;}
+  .about-body p:last-child{margin-bottom:0;}
+
+  /* ---------- FOCUS AREAS ---------- */
+  .focus-grid{
+    display:grid;
+    grid-template-columns:repeat(2, 1fr);
+    gap:1px;
+    background:var(--line);
+    border:1px solid var(--line);
+  }
+  .focus-card{
+    background:var(--parchment);
+    padding:28px;
+  }
+  .focus-icon{
+    width:30px; height:30px;
+    color:var(--orange);
+    margin-bottom:14px;
+  }
+  .focus-card h3{
+    font-size:1.05rem;
+    margin-bottom:8px;
+  }
+  .focus-card p{
+    margin:0;
+    color:var(--ink-soft);
+    font-size:0.93rem;
+  }
+  @media (max-width:600px){
+    .focus-grid{grid-template-columns:1fr;}
+  }
+
+  /* ---------- PROJECTS ---------- */
+  .project{
+    display:grid;
+    grid-template-columns:1.05fr 1fr;
+    gap:48px;
+    align-items:center;
+  }
+  .project img{
+    width:100%;
+    height:auto;
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    background:#fff;
+  }
+  .project h3{
+    font-size:1.3rem;
+    margin-bottom:14px;
+  }
+  .project p{
+    color:var(--ink);
+    margin:0 0 20px;
+  }
+  .tag-row{display:flex; flex-wrap:wrap; gap:8px;}
+  .tag{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.7rem;
+    letter-spacing:0.04em;
+    text-transform:uppercase;
+    color:var(--teal);
+    border:1px solid var(--teal);
+    border-radius:999px;
+    padding:4px 11px;
+  }
+  @media (max-width:760px){
+    .project{grid-template-columns:1fr;}
+  }
+
+  /* ---------- ENTRY LIST (Experience / Publications & Talks) ---------- */
+  .entry-list{display:flex; flex-direction:column; gap:36px;}
+  .entry{
+    display:grid;
+    grid-template-columns:200px 1fr;
+    gap:28px;
+  }
+  .entry-meta{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.78rem;
+    color:var(--ink-soft);
+  }
+  .entry-meta .org{
+    display:block;
+    font-family:'Inter', sans-serif;
+    font-weight:600;
+    color:var(--navy);
+    font-size:0.95rem;
+    margin-bottom:4px;
+  }
+  .entry-role{
+    font-size:1.05rem;
+    font-weight:600;
+    color:var(--navy);
+    margin-bottom:10px;
+  }
+  .entry ul{
+    margin:0; padding-left:18px; color:var(--ink);
+  }
+  .entry li{margin-bottom:6px;}
+  .entry li:last-child{margin-bottom:0;}
+  .pub-list{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:18px;}
+  .pub-list li{
+    padding-bottom:18px;
+    border-bottom:1px solid var(--line);
+    font-size:0.95rem;
+  }
+  .pub-list li:last-child{border-bottom:none; padding-bottom:0;}
+  .pub-list .pub-venue{
+    display:block;
+    margin-top:4px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.78rem;
+    color:var(--teal);
+  }
+  @media (max-width:760px){
+    .entry{grid-template-columns:1fr; gap:6px;}
+  }
+
+  /* ---------- CONTACT / FOOTER ---------- */
+  .contact-inner{
+    display:flex;
+    align-items:flex-end;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:32px;
+  }
+  .contact-heading{max-width:42ch;}
+  .contact-heading p{color:var(--ink-soft); margin-top:12px;}
+  .resume-btn{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    background:var(--orange);
+    color:#fff;
+    font-family:'Oswald', sans-serif;
+    text-transform:uppercase;
+    letter-spacing:0.04em;
+    font-size:0.92rem;
+    font-weight:500;
+    padding:14px 24px;
+    border-radius:var(--radius);
+  }
+  .resume-btn:hover{background:#46603A; text-decoration:none;}
+  .contact-links{
+    display:flex; gap:22px; margin-top:24px; flex-wrap:wrap;
+  }
+  .contact-links a{
+    display:flex; align-items:center; gap:9px;
+    color:var(--ink);
+    font-size:0.92rem;
+  }
+  .contact-links a:hover{color:var(--orange); text-decoration:none;}
+  .contact-links svg{width:18px; height:18px; color:var(--teal);}
+
+  footer{
+    border-top:1px solid var(--line);
+    padding:26px 0;
+  }
+  footer .wrap{
+    display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.72rem;
+    color:var(--ink-soft);
+  }
+  footer a{color:var(--ink-soft);}
+
+  /* scroll reveal */
+  .reveal{
+    opacity:0;
+    transform:translateY(16px);
+    transition:opacity 0.6s ease, transform 0.6s ease;
+  }
+  .reveal.in{opacity:1; transform:none;}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a href="#top" class="nav-name">Christian Vaikona</a>
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks">Menu</button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about">About</a></li>
+      <li><a href="#focus">Focus</a></li>
+      <!-- <li><a href="#experience">Experience</a></li> -->
+      <li><a href="#projects">Projects</a></li>
+      <!-- <li><a href="#publications">Talks &amp; Publications</a></li> -->
+      <li><a href="#contact">Contact</a></li>
+    </ul>
   </div>
+</header>
 
+<main id="top">
 
-  <div class="site-wrap">
-
-    <div class="site-mobile-menu site-navbar-target">
-      <div class="site-mobile-menu-header">
-        <div class="site-mobile-menu-close mt-3">
-          <span class="icon-close2 js-menu-toggle"></span>
-        </div>
-      </div>
-      <div class="site-mobile-menu-body"></div>
-    </div>
-
-
-    <header class="site-navbar py-4 js-sticky-header site-navbar-target" role="banner">
-
-      <div class="container">
-        <div class="row align-items-center">
-
-          <div class="col-6 col-xl-2">
-            <h1 class="mb-0 site-logo"><a href="#about-section" class="h2 mb-0">Christian Vaikona</a></h1>
-          </div>
-
-          <div class="col-12 col-md-10 d-none d-xl-block">
-            <nav class="site-navigation position-relative text-right" role="navigation">
-
-              <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
-                <li><a href="#about-section" class="nav-link">About</a></li>
-                <li><a href="#projects-section" class="nav-link">Projects</a></li>
-                <li><a href="#contact-section" class="nav-link">Contact</a></li>
-              </ul>
-            </nav>
-          </div>
-
-
-          <div class="col-6 d-inline-block d-xl-none ml-md-0 py-3" style="position: relative; top: 3px;"><a href="#" class="site-menu-toggle js-menu-toggle float-right"><span class="icon-menu h3"></span></a></div>
-
+  <!-- HERO -->
+  <section class="hero" style="padding-bottom:0;">
+    <div class="wrap">
+      <div class="hero-grid">
+        <img src="images/ChristianVaikona_GeneralPFP.JPG" alt="Headshot of Christian Vaikona" class="hero-photo">
+        <div>
+          <p class="eyebrow">London → San Diego</p>
+          <h1 class="hero-name">Christian<br>Vaikona</h1>
+          <p class="hero-tagline">Computer Science &amp; Mathematics student building toward a career in sports analytics and data science.</p>
         </div>
       </div>
 
-    </header>
-
-
-
-
-    <div class="site-section cta-big-image border-bottom" id="about-section">
-      <div class="container" style="padding-top: 30px">
-        <div class="row">
-          <div class="col-lg-6 mb-5" data-aos="fade-up" data-aos-delay="">
-
-            <img src="images/ChristianVaikona_GeneralPFP.JPG" alt="Headshot image of Christian Vaikona" class="img-fluid" style="border-radius: 50%; width: 400px; height: 400px; object-fit: cover;">
-
+      <div class="statbar reveal">
+        <div class="statbar-row">
+          <div class="stat">
+            <div class="stat-label">Studying</div>
+            <div class="stat-value">CS <span class="accent">+</span> Math, Univ. of San Diego</div>
           </div>
-          <div class="col-lg-5 ml-auto" data-aos="fade-up" data-aos-delay="100">
-            <div class="mb-4">
-              <p>
-                I was originally born in London, England and am half Tongan. I have been living in the United States for a little over a decade now.
-              </p>
-              <p>
-                I am a student at the University of San Diego studying Computer Science and Mathematics with focuses in Data Science, AI, and Applied Mathematics. I want to go into Sports Analytics.
-               </p>
-               <p>
-                Outside of the classroom, I love to go hiking, lift weights, and play video games. I also love being a Retreat Coordinator for the University Ministry.
-               </p>
-
-
-            </div>
-
-            
-
+          <div class="stat">
+            <div class="stat-label">Focus</div>
+            <div class="stat-value">Data Science <span class="accent">·</span> AI <span class="accent">·</span> Applied Math</div>
+          </div>
+          <div class="stat">
+            <div class="stat-label">Aiming for</div>
+            <div class="stat-value">Sports <span class="accent">Analytics</span></div>
           </div>
         </div>
       </div>
     </div>
+  </section>
 
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">About</p>
+        <h2 class="section-title">Background</h2>
+      </div>
+      <div class="about-body reveal">
+        <p>I was born in London, England, and am half Tongan. I've lived in the United States for a little over a decade now.</p>
+        <p>I'm a student at the University of San Diego studying Computer Science and Mathematics, with focuses in Data Science, AI, and Applied Mathematics. My goal is to work in sports analytics, where I can combine quantitative rigor with a lifelong interest in athletics.</p>
+        <p>Outside the classroom, I hike, lift weights, and play video games. I also serve as a Retreat Coordinator for the University Ministry.</p>
+      </div>
+    </div>
+  </section>
 
+  <!-- FOCUS AREAS -->
+  <section id="focus">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">Focus</p>
+        <h2 class="section-title">What I work on</h2>
+      </div>
 
-    <section class="site-section border-bottom" id="projects-section">
-      <div class="container">
-        <div class="row mb-5 justify-content-center">
-          <div class="col-md-8 text-center">
-            <h2 class="section-title mb-3" data-aos="fade-up" data-aos-delay="">Projects</h2>
-          </div>
+      <div class="focus-grid reveal">
+        <div class="focus-card">
+          <svg class="focus-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 19V9M11 19V5M18 19v-7"/></svg>
+          <h3>Data Science</h3>
+          <p>Working with structured and unstructured data to find patterns that hold up under scrutiny.</p>
         </div>
-        <div class="row">
-          <div class="col-lg-6 mb-5" data-aos="fade-up" data-aos-delay="">
-          
-            <img src="images/ElevatorUML.png" alt="UML diagram of Elevator Simulator project design" class="img-fluid">
-          
-          </div>
-          <div class="col-lg-5 ml-auto" data-aos="fade-up" data-aos-delay="100">
-            <div class="mb-4">
-              <h3>Elevator Simulator</h3>
-              <p>
-               This project is an elevator simulation system for a multi-floor building. Its main 
-               goal is to model how different kinds of elevators respond to passenger calls, how 
-               those calls are assigned, and how the elevators move over time through repeated 
-               simulation rounds. The project practices object-oriented design by using abstraction, 
-               inheritance, interfaces, polymorphism, and separation of responsibilities. It also 
-               helps build skill in designing systems where multiple object types share common 
-               behavior but still have specialized rules. 
-               
-               More specifically, the program includes several elevator types with different 
-               behaviors, two scheduling strategies, and a simulator that repeatedly assigns calls, 
-               moves elevators, picks up passengers, drops them off, and prints the system state 
-               until everything is complete.
-              </p>
+        <div class="focus-card">
+          <svg class="focus-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8"/></svg>
+          <h3>AI &amp; Machine Learning</h3>
+          <p>Building and reasoning about models, from first principles through to applied systems.</p>
+        </div>
+        <div class="focus-card">
+          <svg class="focus-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 4h14M7 4v4l4 4-4 4v4M17 4v4l-4 4 4 4v4"/></svg>
+          <h3>Applied Mathematics</h3>
+          <p>Grounding analysis in statistics, linear algebra, and optimization rather than guesswork.</p>
+        </div>
+        <div class="focus-card">
+          <svg class="focus-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M8 21h8M12 17v4M6 4h12v3a6 6 0 0 1-12 0V4ZM6 5H3v2a3 3 0 0 0 3 3M18 5h3v2a3 3 0 0 1-3 3"/></svg>
+          <h3>Sports Analytics</h3>
+          <p>Translating the same quantitative methods into performance, strategy, and player evaluation.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-            </div>
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">Projects</p>
+        <h2 class="section-title">Selected work</h2>
+      </div>
 
-            
-
+      <div class="project reveal">
+        <img src="images/ElevatorUML.png" alt="UML diagram of the Elevator Simulator project design">
+        <div>
+          <h3>Elevator Simulator</h3>
+          <p>An elevator simulation system for a multi-floor building, modeling how different elevator types respond to passenger calls, how calls are assigned, and how cars move over repeated simulation rounds.</p>
+          <p>Built to practice object-oriented design: abstraction, inheritance, interfaces, and polymorphism across object types that share behavior but follow specialized rules. The simulator includes multiple elevator types, two scheduling strategies, and a control loop that assigns calls, moves elevators, and reports system state until the simulation completes.</p>
+          <div class="tag-row">
+            <span class="tag">OOP Design</span>
+            <span class="tag">Simulation</span>
+            <span class="tag">Scheduling Algorithms</span>
           </div>
         </div>
       </div>
-      
+    </div>
+  </section>
 
-    </section>
+  <!--
+  EXPERIENCE — uncomment and fill in when ready.
+  Also uncomment the matching nav link near the top of this file.
 
+  <section id="experience">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">Experience</p>
+        <h2 class="section-title">Work &amp; involvement</h2>
+      </div>
 
-    <section class="site-section" id="contact-section" data-aos="fade">
-      <div class="container">
-        <div class="row mb-5">
-          <div class="col-12 text-center">
-            <h2 class="section-title mb-3">Contact Me</h2>
+      <div class="entry-list reveal">
+        <div class="entry">
+          <div class="entry-meta">
+            <span class="org">Company / Organization Name</span>
+            Month Year &ndash; Present
+          </div>
+          <div>
+            <div class="entry-role">Job Title or Role</div>
+            <ul>
+              <li>One sentence on a concrete outcome or responsibility.</li>
+              <li>Another concrete outcome, ideally with a number attached.</li>
+            </ul>
           </div>
         </div>
-        <div class="row mb-5 text-center justify-content-center">
 
-
-
-          <div class="col-md-4 text-center">
-            <p class="mb-0">
-              <span class="icon-graduation-cap d-block h4 text-primary"></span>
-              <a href="files/ChristianVaikona_Resume_Website.pdf">My Resume</a>
-            </p>
+        <div class="entry">
+          <div class="entry-meta">
+            <span class="org">Another Organization</span>
+            Month Year &ndash; Month Year
           </div>
-          
-          <div class="col-md-4 text-center">
-            <p class="mb-0">
-              <span class="icon-mail_outline d-block h4 text-primary"></span>
-              <a href="mailto:cvaikona@sandiego.edu">cvaikona@sandiego.edu</a>
-            </p>
+          <div>
+            <div class="entry-role">Role Title</div>
+            <ul>
+              <li>What you did and what changed because of it.</li>
+            </ul>
           </div>
-
-          <div class="col-md-4 text-center">
-            <p class="mb-0">
-              <span class="icon-github d-block h4 text-primary"></span>
-              <a href="https://github.com/ChristianVaikona" target="_blank">GitHub</a>
-            </p>
-          </div>
-
-          <div class="col-md-4 text-center">
-            <p class="mb-0">
-              <span class="icon-linkedin d-block h4 text-primary"></span>
-              <a href="https://linkedin.com/in/christianvaikona" target="_blank">LinkedIn</a>
-            </p>
-          </div>
-
         </div>
-
       </div>
-    </section>
+    </div>
+  </section>
+  -->
 
+  <!--
+  TALKS & PUBLICATIONS — uncomment and fill in when ready.
+  Also uncomment the matching nav link near the top of this file.
 
-    <footer class="site-footer">
-      <div class="container">
+  <section id="publications">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">Talks &amp; Publications</p>
+        <h2 class="section-title">Writing &amp; speaking</h2>
+      </div>
 
-          <div class="col-md-12 text-center">
-            <p>
-            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-            Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This website builds on a template by <a href="https://colorlib.com" target="_blank" >Colorlib</a>
-            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-            </p>
+      <ul class="pub-list reveal">
+        <li>
+          Title of a talk, paper, or article.
+          <span class="pub-venue">Venue or publication &middot; Month Year</span>
+        </li>
+        <li>
+          Another title.
+          <span class="pub-venue">Venue or publication &middot; Month Year</span>
+        </li>
+      </ul>
+    </div>
+  </section>
+  -->
 
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="wrap">
+      <div class="contact-inner reveal">
+        <div class="contact-heading">
+          <p class="eyebrow">Contact</p>
+          <h2 class="section-title">Let's talk</h2>
+          <p>Open to conversations about data science, sports analytics, or anything in between.</p>
+          <div class="contact-links">
+            <a href="mailto:cvaikona@sandiego.edu">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+              cvaikona@sandiego.edu
+            </a>
+            <a href="https://github.com/ChristianVaikona" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.7 2.8 5.6 3.1 5.6 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4.2 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg>
+              GitHub
+            </a>
+            <a href="https://linkedin.com/in/christianvaikona" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 10v7M7 7v.01M11 17v-4.5a2.5 2.5 0 0 1 5 0V17M11 10v7"/></svg>
+              LinkedIn
+            </a>
           </div>
-
-
+        </div>
+        <a href="files/ChristianVaikona_Resume_Website.pdf" class="resume-btn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="18" height="18"><path d="M12 3v12m0 0 4-4m-4 4-4-4M5 21h14"/></svg>
+          Download Resume
+        </a>
       </div>
-    </footer>
+    </div>
+  </section>
 
-  </div> <!-- .site-wrap -->
+</main>
 
-  <script src="js/jquery-3.3.1.min.js"></script>
-  <script src="js/jquery-ui.js"></script>
-  <script src="js/popper.min.js"></script>
-  <script src="js/bootstrap.min.js"></script>
-  <script src="js/owl.carousel.min.js"></script>
-  <script src="js/jquery.countdown.min.js"></script>
-  <script src="js/jquery.easing.1.3.js"></script>
-  <script src="js/aos.js"></script>
-  <script src="js/jquery.fancybox.min.js"></script>
-  <script src="js/jquery.sticky.js"></script>
-  <script src="js/isotope.pkgd.min.js"></script>
-  <script src="js/collapsable.js"></script>
+<footer>
+  <div class="wrap">
+    <span>&copy; <span id="year"></span> Christian Vaikona</span>
+    <span>Built &amp; designed from scratch</span>
+  </div>
+</footer>
 
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
 
-  <script src="js/main.js"></script>
+  var navToggle = document.getElementById('navToggle');
+  var navLinks = document.getElementById('navLinks');
+  navToggle.addEventListener('click', function(){
+    var open = navLinks.classList.toggle('open');
+    navToggle.setAttribute('aria-expanded', open);
+  });
+  navLinks.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){
+      navLinks.classList.remove('open');
+      navToggle.setAttribute('aria-expanded', 'false');
+    });
+  });
 
-  </body>
+  var revealEls = document.querySelectorAll('.reveal');
+  if('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          entry.target.classList.add('in');
+          io.unobserve(entry.target);
+        }
+      });
+    }, {threshold:0.12});
+    revealEls.forEach(function(el){ io.observe(el); });
+  } else {
+    revealEls.forEach(function(el){ el.classList.add('in'); });
+  }
+</script>
+
+</body>
 </html>
